@@ -160,3 +160,28 @@ public class PageEventHandler {
 ```
 
 ![img.png](captures/img1.png)
+
+---
+
+### **3.3. Service Supplier Kafka**
+
+Un **Supplier** émet des messages de façon programmatique (ex: heartbeat, données simulées).
+
+```java
+@Bean
+public Supplier<PageEvent> pageEventSupplier(){
+    return ()->{
+        return new PageEvent(
+                Math.random()>0.5?"P1":"P2",
+                Math.random()>0.5?"U1":"U2",
+                new Date(),
+                10+new Random().nextInt(10000)
+        );
+    };
+}
+```
+> ⏱️ Par défaut, Spring appelle le `Supplier` toutes les secondes (configurable via `spring.cloud.stream.bindings.pageEventSupplier-out-0.producer.poller.fixed-delay=10000 // par defaut`).
+
+---
+
+![img.png](captures/img2.png)
