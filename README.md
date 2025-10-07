@@ -197,7 +197,7 @@ docker exec --interactive --tty bdcc-kafla-broker kafka-topics --bootstrap-serve
 
 > Ces commandes sont essentielles pour **tester, déboguer et valider** le comportement de ton architecture orientée événements avec Kafka.
 
-![0.png](captures/img1.png)
+![0.png](src/main/resources/captures/0.png)
 
 
 
@@ -238,7 +238,7 @@ public class PageEventController {
 - L’endpoint `/publish?name=P1&topic=page-events` crée un événement aléatoire.
 - `StreamBridge` permet d’envoyer dynamiquement vers n’importe quel topic.
 
-![Capture du producteur](captures/img.png)
+![Capture du producteur](src/main/resources/captures/img.png)
 
 ---
 
@@ -261,7 +261,7 @@ public class PageEventHandler {
 - Spring Cloud Stream détecte automatiquement ce `Consumer<PageEvent>`.
 - Il s’abonne au topic configuré (ex : `page-events`).
 
-![Capture du consommateur](captures/img1.png)
+![Capture du consommateur](src/main/resources/captures/img1.png)
 
 ---
 
@@ -284,7 +284,7 @@ public Supplier<PageEvent> pageEventSupplier() {
 - Le `Supplier` est invoqué périodiquement par Spring.
 - Utile pour simuler un flux continu (ex: capteurs, logs, etc.).
 
-![Capture du supplier](captures/img2.png)
+![Capture du supplier](src/main/resources/captures/img2.png)
 
 ---
 
@@ -388,10 +388,10 @@ Et une page HTML affiche les données en temps réel avec **Smoothie.js** :
 - Chaque seconde, il reçoit un objet JSON avec les compteurs.
 - Les courbes sont mises à jour en temps réel.
 
-![Interface web](captures/img4.png)  
+![Interface web](src/main/resources/captures/img4.png)  
 *Visualisation en temps réel des visites par page (P1 en vert, P2 en rouge)*
 
-![Logs Kafka Streams](captures/img5.png)  
+![Logs Kafka Streams](src/main/resources/captures/img5.png)  
 *Logs montrant les agrégats calculés par Kafka Streams*
 
 ---
